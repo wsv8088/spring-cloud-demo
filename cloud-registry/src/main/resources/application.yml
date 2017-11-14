@@ -1,0 +1,15 @@
+server:
+  port: 8761
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    #是否向注册中心注册自己的服务
+    registerWithEureka: true
+    #是否检索服务:消费者服务启动时,会发送一个Rest请求给服务注册中心,以获取上面注册的服务清单。
+    #为了性能考虑，Eureka Server会维护一份只读的服务注册清单来返回给客户端，同时该缓存清单默认会每隔30秒更新一次。
+    #因为这个应用本身就是Eureka Server,如果开启的话,会因为没有找到注册中心报异常,但是不会影响启动
+    fetchRegistry: false
+    serviceUrl:
+      default: http://${eureka.instance.hostname}:${server.port}
