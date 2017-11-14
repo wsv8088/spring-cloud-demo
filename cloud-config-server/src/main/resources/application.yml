@@ -28,7 +28,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/wsv8088/spring-cloud-demo/tree/master/cloud-config-repo
-          username: wsv8088
-          password: qwe!@#45
+          uri: F:\workspace\github\spring-cloud-demo\cloud-config-repo
+#          username: wsv8088
+#          password: qwe!@#45
 
