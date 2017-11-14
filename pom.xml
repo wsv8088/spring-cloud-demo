@@ -18,6 +18,7 @@
     <modules>
         <module>cloud-registry</module>
         <module>cloud-config-server</module>
+        <module>cloud-service-user</module>
     </modules>
 
 

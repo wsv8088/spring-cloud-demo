@@ -1,0 +1,13 @@
+#访问的根路径
+server:
+  contextPath: /api
+
+spring:
+  application:
+    name: cloud-service-user
+  cloud:
+    config:
+      failFast: true
+      uri: http://${config.host:localhost}:${config.port:8888}
+  profiles:
+    active: ${config.active:dev}
