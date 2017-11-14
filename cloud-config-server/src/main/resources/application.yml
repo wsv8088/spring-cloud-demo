@@ -16,7 +16,7 @@ eureka:
       #Eureka客户端向注册中心发送心跳的间隔时间,默认30秒
       leaseRenewalIntervalInSeconds: 30
       #Eureka服务端在收到最后一次收到心跳之后等待的时间上限，如果超过这个时间,默认90秒
-      #超过这个时间,服务端将会从该服务实例从可用实例清单中剔除,从而禁止服务调用请求被发送此实例上
+      #超过这个时间,服务端将会从该服务实例从可用实例清单中剔除,从而禁止服务调用请求被发送到此实例上
       leaseExpirationDurationInSeconds: 90
       #是否优先使用IP地址作为主机名的标识
       preferIpAddress: true
