@@ -28,8 +28,8 @@ spring:
     config:
       server:
         git:
-#          uri: E:\github\spring-cloud-demo
-          uri: https://github.com/wsv8088/spring-cloud-demo.git
+          uri: F:\workspace\github\demo\spring-cloud-demo
+#          uri: https://github.com/wsv8088/spring-cloud-demo.git
           #每个存储库还可以选择将配置文件存储在子目录中,通过该参数指定子目录,支持多个文件夹,中间用英文','分隔
           searchPaths: cloud-config-repo
 

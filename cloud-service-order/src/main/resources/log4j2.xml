@@ -42,7 +42,7 @@
             <!--<AppenderRef ref="RollingFile"/>-->
         </Root>
         <!-- 为sql语句配置特殊的Log级别，方便调试 -->
-        <Logger name="com.wsun.springcloud.service.user" level="debug" additivity="false">
+        <Logger name="com.wsun.springcloud.service.order" level="debug" additivity="false">
             <AppenderRef ref="Console"/>
         </Logger>
     </Loggers>

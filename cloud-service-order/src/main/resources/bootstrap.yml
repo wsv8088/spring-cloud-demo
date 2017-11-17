@@ -4,22 +4,13 @@ server:
 
 spring:
   application:
-    name: cloud-service-user
+    name: cloud-service-order
   cloud:
     config:
       failFast: true
       uri: http://${config.host:localhost}:${config.port:8888}
   profiles:
     active: ${config.active:dev}
-
-  #指定monitor的地址,让当前应用被Admin监控
-  boot:
-    admin:
-      url: http://${admin.monitor.host:localhost}:${admin.monitor.host::8050}/monitor
-
-
-info:
-  version: @project.version@
 
 # 可以通过下面的方式获取资源信息
 # /{application}/{profile}[/{label}]
