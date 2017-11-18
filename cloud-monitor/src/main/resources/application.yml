@@ -22,3 +22,6 @@ eureka:
       preferIpAddress: true
       metadataMap:
         instanceId: ${spring.application.name}:${random.value}
+
+
+

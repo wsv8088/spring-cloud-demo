@@ -1,33 +1,23 @@
 #访问的根路径
-server:
-  contextPath: /api
-
 spring:
   application:
     name: cloud-service-user
-  cloud:
-    config:
-      failFast: true
-      uri: http://${config.host:localhost}:${config.port:8888}
-  profiles:
-    active: ${config.active:dev}
+#  cloud:
+#    config:
+#      failFast: true
+#      uri: http://${config.host:localhost}:${config.port:8888}
+#  profiles:
+#    active: ${config.active:dev}
 
   #指定monitor的地址,让当前应用被Admin监控
   boot:
     admin:
-      url: http://${admin.monitor.host:localhost}:${admin.monitor.host::8050}/monitor
+      client:
+        preferIp: true
+      url: http://${admin.monitor.host:localhost}:${admin.monitor.host:8050}/monitor
 
 
-info:
-  version: @project.version@
+management:
+  security:
+    enabled: false
 
-# 可以通过下面的方式获取资源信息
-# /{application}/{profile}[/{label}]
-# /{application}-{profile}.yml
-# /{label}/{application}-{profile}.yml
-# /{application}-{profile}.properties
-# /{label}/{application}-{profile}.properties
-#
-# application:表示应用名称,在client中通过spring.config.name配置
-# profile:表示获取指定环境下配置，例如开发环境、测试环境、生产环境 默认值default，实际开发中可以是 dev、test、demo、production等
-# label:git标签,默认值master

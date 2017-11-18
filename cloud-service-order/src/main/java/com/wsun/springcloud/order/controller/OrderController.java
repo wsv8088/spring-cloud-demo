@@ -1,8 +1,8 @@
-package com.wsun.springcloud.service.order.controller;
+package main.java.com.wsun.springcloud.order.controller;
 
-import com.wsun.springcloud.service.order.feign.UserFeign;
-import com.wsun.springcloud.service.order.pojo.domain.Order;
-import com.wsun.springcloud.service.order.pojo.rpc.result.User;
+import main.java.com.wsun.springcloud.order.feign.UserFeign;
+import main.java.com.wsun.springcloud.order.pojo.domain.Order;
+import main.java.com.wsun.springcloud.order.pojo.rpc.result.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,7 +28,7 @@ public class OrderController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Order getOrderByID(@PathVariable Long id) {
-        log.debug("应用:{}根据ID:{}查询订单信息", applicationName, id);
+        log.info("应用:{}根据ID:{}查询订单信息", applicationName, id);
         Order order = new Order();
         order.setId(id);
         order.setOrderTime(LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME));

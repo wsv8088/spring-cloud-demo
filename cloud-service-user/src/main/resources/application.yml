@@ -3,7 +3,8 @@ server:
 
 eureka:
   client:
-    registerWithEureka: true
+    registerWithEureka: false
+    #是否从服务注册中心拉取注册信息
     #这个应用本身就是Eureka Server,不需要向注册中心注册自己的服务,所以要关闭这个开关
     fetchRegistry: true
     #指定服务注册中心的位置
@@ -29,3 +30,6 @@ eureka:
 #  level:
 #    root: DEBUG
 #    com.wsun.springcloud.service.user: DEBUG
+
+info:
+  version: @project.version@

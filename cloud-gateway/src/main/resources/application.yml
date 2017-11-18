@@ -1,9 +1,9 @@
 server:
-  port: 8050
+  port: 8088
 
 eureka:
   client:
-    registerWithEureka: true
+    registerWithEureka: false
     #这个应用本身就是Eureka Server,不需要向注册中心注册自己的服务,所以要关闭这个开关
     fetchRegistry: true
     #指定服务注册中心的位置
@@ -22,3 +22,5 @@ eureka:
       preferIpAddress: true
       metadataMap:
         instanceId: ${spring.application.name}:${random.value}
+
+

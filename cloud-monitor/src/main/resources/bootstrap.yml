@@ -1,15 +1,33 @@
 #访问的根路径
 server:
-  contextPath: /monitor
+  context-path: /monitor
+
 
 spring:
   application:
     name: cloud-monitor
+  boot:
+    client:
+      preferIp: true
+      url: http://${admin.monitor.host:localhost}:${admin.monitor.host::8050}
+  jackson:
+    serialization:
+      indentOutput: true
+
+    #指定monitor的地址,让当前应用被Admin监控
+    boot:
+      admin:
+        client:
+          preferIp: true
+        url: http://${admin.monitor.host:localhost}:${admin.monitor.host::8050}/monitor
 
 
-endpoints:
-  health:
-    sensitive: false
+management:
+  security:
+    enabled: false
+
+
+
 
 #actuator组件暴露的health接口权限是由两个配置： management.security.enabled 和 endpoints.health.sensitive组合的结果进行返回的。
 #同理,metrics接口权限是由两个配置： management.security.enabled 和 endpoints.metrics.sensitive组合的结果进行返回的。

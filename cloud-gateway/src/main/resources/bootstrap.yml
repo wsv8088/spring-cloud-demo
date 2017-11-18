@@ -7,10 +7,7 @@ spring:
       url: http://${monitor.address:localhost}:${monitor.port:8050}
       client:
         prefer-ip: true
-#  cloud:
-#    config:
-#      uri: http://${config.address:localhost}:${config.port:8888}
-#        failFast: true
+
 
 
 

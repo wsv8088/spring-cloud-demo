@@ -1,3 +1,10 @@
 spring:
   application:
     name: cloud-config-server
+
+  #指定monitor的地址,让当前应用被Admin监控
+  boot:
+    admin:
+      client:
+        preferIp: true
+      url: http://${admin.monitor.host:localhost}:${admin.monitor.host:8050}
