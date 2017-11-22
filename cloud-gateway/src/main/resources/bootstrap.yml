@@ -1,14 +1,33 @@
-#访问的根路径
+
 spring:
   application:
     name: cloud-gateway
-  boot:
-    admin:
-      url: http://${monitor.address:localhost}:${monitor.port:8050}
-      client:
-        prefer-ip: true
+  #指定monitor的地址,让当前应用被Admin监控
 
+eureka:
+  client:
+    registerWithEureka: true
+    #是否从服务注册中心拉取注册信息
+    #这个应用本身就是Eureka Server,不需要向注册中心注册自己的服务,所以要关闭这个开关
+    fetchRegistry: true
+    #指定服务注册中心的位置
+    serviceUrl:
+    #key:value的意思是如果找不到eureka.host定义的值,就使用:后面的值
+      default: http://${eureka.host:localhost}:${eureka.port:8761}/eureka/
+    #表示eureka client间隔多久去拉取服务注册信息,默认为30秒,对于api-gateway,如果要迅速获取服务注册状态,可以缩小该值,比如5秒
+    registry-fetch-interval-seconds: 30
+  instance:
+      hostname: localhost
+      #Eureka客户端向注册中心发送心跳的间隔时间,默认30秒
+      leaseRenewalIntervalInSeconds: 30
+      #Eureka服务端在收到最后一次收到心跳之后等待的时间上限，如果超过这个时间,默认90秒
+      #超过这个时间,服务端将会从该服务实例从可用实例清单中剔除,从而禁止服务调用请求被发送到此实例上
+      leaseExpirationDurationInSeconds: 90
+      #是否优先使用IP地址作为主机名的标识
+      preferIpAddress: true
+      metadataMap:
+        instanceId: ${spring.application.name}:${random.value}
 
-
-
-
+management:
+  security:
+    enabled: false

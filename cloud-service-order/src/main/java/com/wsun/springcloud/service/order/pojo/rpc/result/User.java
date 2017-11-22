@@ -1,4 +1,4 @@
-package main.java.com.wsun.springcloud.user.pojo.domain;
+package com.wsun.springcloud.service.order.pojo.rpc.result;
 
 import lombok.Data;
 

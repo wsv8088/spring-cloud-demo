@@ -1,8 +1,8 @@
-package main.java.com.wsun.springcloud.order.controller;
+package com.wsun.springcloud.service.order.controller;
 
-import main.java.com.wsun.springcloud.order.feign.UserFeign;
-import main.java.com.wsun.springcloud.order.pojo.domain.Order;
-import main.java.com.wsun.springcloud.order.pojo.rpc.result.User;
+import com.wsun.springcloud.service.order.feign.UserFeign;
+import com.wsun.springcloud.service.order.pojo.domain.Order;
+import com.wsun.springcloud.service.order.pojo.rpc.result.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

@@ -18,9 +18,9 @@
     <modules>
         <module>cloud-registry</module>
         <module>cloud-config-server</module>
-        <module>cloud-service-user</module>
         <module>cloud-monitor</module>
         <module>cloud-gateway</module>
+        <module>cloud-service-user</module>
         <module>cloud-service-order</module>
     </modules>
 

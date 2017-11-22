@@ -1,6 +1,6 @@
-package main.java.com.wsun.springcloud.order.feign;
+package com.wsun.springcloud.service.order.feign;
 
-import main.java.com.wsun.springcloud.order.pojo.rpc.result.User;
+import com.wsun.springcloud.service.order.pojo.rpc.result.User;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
