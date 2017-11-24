@@ -1,7 +1,28 @@
 
+
+logging:
+  file: /opt/hkr-logs/hkr-monitor-admin.log
+  level: DEBUG
+
 spring:
   application:
     name: cloud-monitor
+  boot:
+    admin:
+      monitor:
+        period: 39999
+        status-lifetime: 40000
+        connect-timeout: 18000
+        read-timeout: 20000
+      discovery:
+        converter:
+          management-context-path: /api/v1
+      routes:
+        endpoints: env,metrics,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,loggers,auditevents,hystrix.stream
+      turbine:
+        clusters: HKR-CLUSTER
+        location: hkr-hystrix-turbine
+
 
 eureka:
   client:

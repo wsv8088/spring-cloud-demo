@@ -15,15 +15,15 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <exclusions>
-                <!-- 想要配置log4j2,就要先去除logging包(logback的实现) -->
-                <!-- 否则在启动时会警告:因为Sprintboot存在重复的Slf4j依赖 -->
-                <!-- SLF4J: Class path contains multiple SLF4J bindings. -->
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-logging</artifactId>
-                </exclusion>
-            </exclusions>
+            <!--<exclusions>-->
+                <!--&lt;!&ndash; 想要配置log4j2,就要先去除logging包(logback的实现) &ndash;&gt;-->
+                <!--&lt;!&ndash; 否则在启动时会警告:因为Sprintboot存在重复的Slf4j依赖 &ndash;&gt;-->
+                <!--&lt;!&ndash; SLF4J: Class path contains multiple SLF4J bindings. &ndash;&gt;-->
+                <!--<exclusion>-->
+                    <!--<groupId>org.springframework.boot</groupId>-->
+                    <!--<artifactId>spring-boot-starter-logging</artifactId>-->
+                <!--</exclusion>-->
+            <!--</exclusions>-->
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -55,10 +55,10 @@
         </dependency>
 
         <!-- Springboot对Log4j2的支持 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-log4j2</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-log4j2</artifactId>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>org.projectlombok</groupId>

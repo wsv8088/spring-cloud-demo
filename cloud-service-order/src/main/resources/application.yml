@@ -1,5 +1,12 @@
 server:
   port: 9909
 
+logging:
+  level:
+    root: info
+    com.wsun.springcloud.service.user: DEBUG
+  file: d:\logs\user.log
+
+
 info:
   version: "@project.version@"

@@ -3,10 +3,12 @@ server:
 
 
 #定义日志的根和具体category的级别
-#logging:
-#  level:
-#    root: DEBUG
-#    com.wsun.springcloud.service.user: DEBUG
+logging:
+  level:
+    root: info
+    com.wsun.springcloud.service.user: info
+  file: d:\logs\user.log
 
 info:
-  version: @project.version@
+  version: "@project.version@"
+

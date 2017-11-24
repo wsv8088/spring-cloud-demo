@@ -5,6 +5,10 @@ server:
 spring:
   application:
     name: cloud-service-order
+  cloud:
+    config:
+      enabled: false
+
 #  cloud:
 #    config:
 #      failFast: true

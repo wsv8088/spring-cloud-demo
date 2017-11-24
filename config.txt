@@ -45,6 +45,9 @@ server:
 spring:
   application:
     name: cloud-service-user
+  #ConfigClientProperties资源类中spring.cloud.config.enable属性默认为true
+  #spring.cloud.config.uri的默认值为:http://localhost:8888
+  #所以在不声明关闭此参数时,服务会默认从ConfigServer拉取配置
   cloud:
     config:
       failFast: true

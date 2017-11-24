@@ -7,12 +7,17 @@ server:
 spring:
   application:
     name: cloud-service-user
-#  cloud:
+  cloud:
+    config:
+      enabled: false
+
+  #  cloud:
 #    config:
 #      failFast: true
 #      uri: http://${config.host:localhost}:${config.port:8888}
 #  profiles:
 #    active: ${config.active:dev}
+
 
 eureka:
   client:
@@ -29,7 +34,6 @@ eureka:
   instance:
       statusPageUrlPath: ${server.contextPath}/info
       healthCheckUrlPath: ${server.contextPath}/health
-      hostname: localhost
       #Eureka客户端向注册中心发送心跳的间隔时间,默认30秒
       leaseRenewalIntervalInSeconds: 30
       #Eureka服务端在收到最后一次收到心跳之后等待的时间上限，如果超过这个时间,默认90秒
