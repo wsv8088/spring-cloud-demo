@@ -1,12 +1,12 @@
 server:
   port: 9909
 
+
 logging:
   level:
     root: info
-    com.wsun.springcloud.service.user: DEBUG
-  file: d:\logs\user.log
+  file: d:\logs\order.log
 
-
+#定义日志的根和具体category的级别
 info:
   version: "@project.version@"

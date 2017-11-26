@@ -30,10 +30,17 @@ spring:
 
 
 #定义日志的根和具体category的级别
-#logging:
-#  level:
-#    root: DEBUG
-#    com.wsun.springcloud.service.user: DEBUG
+#定义日志的根和具体category的级别
+logging:
+  level:
+    root: info
+    com.wsun.springcloud.service.user: info
+  #springboot默认使用logback作为日志组件,本DEMO已经替换为log4j2的实现,
+  #因此file参数应当不生效,而是log4j2.xml中定义的为准,但是为了logfile端点可用,仍需要指定具体的文件位置,即：与log4j2.xml中定义的相同
+  #file是用来定义SBA在调用logfile这个endpoint时去加载的文件指向,如果没有指定该文件位置,
+  #或无此文件,log都将不会正确显示
+  #SBA在启动(包括启动后的定时询问)时,会依次调用微服务的各种endpoint,调用成功的会在SBA监控面板中显示出来
+  file: d:\logs\user.log
 
 
 ----------------------------------bootstrap.xml----------------------------------
@@ -45,13 +52,14 @@ server:
 spring:
   application:
     name: cloud-service-user
-  #ConfigClientProperties资源类中spring.cloud.config.enable属性默认为true
-  #spring.cloud.config.uri的默认值为:http://localhost:8888
-  #所以在不声明关闭此参数时,服务会默认从ConfigServer拉取配置
   cloud:
     config:
       failFast: true
       uri: http://${config.host:localhost}:${config.port:8888}
+      #ConfigClientProperties资源类中spring.cloud.config.enable属性默认为true
+      #spring.cloud.config.uri的默认值为:http://localhost:8888
+      #所以在不声明关闭此参数时,服务会默认从ConfigServer拉取配置
+      enable: false
   profiles:
     active: ${config.active:dev}
 
@@ -59,9 +67,34 @@ spring:
   #最新版本已经不需要此配置,SBA会自动从Eureka服务端拉取
   boot:
     admin:
+      #可选 ----------------begin----------------
+      #被监控的服务是否优先使用IP地址作为主机名的标识
       client:
         preferIp: true
-      url: http://${admin.monitor.host:localhost}:${admin.monitor.host::8050}
+        #是否启用Spring Boot Admin Client
+        enabled: true
+      url: http://${admin.monitor.host:localhost}:${admin.monitor.host:8050}
+      #可选 ----------------end----------------
+
+      monitor:
+        #多久更新一次在SBA上的状态,单位:ms,默认:10s
+        period: 10000
+        status-lifetime: 40000
+        connect-timeout: 18000
+        read-timeout: 20000
+      discovery:
+        converter:
+          #在SBA监控平台上右上角显示的Management URL
+          #这个参数非常重要,不配置或不正确的配置均会导致,SBA看不到微服务的监控信息,且监控点显示不全
+          management-context-path: /api/v1
+        #不被SBA监控的服务：因为SBA是通过拉取注册在EurekaServer上的服务信息来对其监控,因此此参数的值是服务名,多个服务用,分隔
+        ignored-services: cloud-monitor
+      #监控点:可根据需要删减
+      routes:
+        endpoints: env,metrics,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,loggers,auditevents,hystrix.stream
+      turbine:
+        clusters: HKR-CLUSTER
+        location: hkr-hystrix-turbine
 
 
 eureka:
@@ -78,7 +111,7 @@ eureka:
     #表示eureka client间隔多久去拉取服务注册信息,默认为30秒,对于api-gateway,如果要迅速获取服务注册状态,可以缩小该值,比如5秒
     registry-fetch-interval-seconds: 30
   instance:
-      #当微服务修改ContextPath属性性,需要重新用以下两个参数定义info和health接口的path
+      #当微服务修改自身的ContextPath属性时,需要重新用以下两个参数定义info和health接口的path
       statusPageUrlPath: ${server.contextPath}/info
       healthCheckUrlPath: ${server.contextPath}/health
       hostname: localhost

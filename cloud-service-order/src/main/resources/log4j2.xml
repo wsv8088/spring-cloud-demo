@@ -20,15 +20,15 @@
         <Console name="Console" target="SYSTEM_OUT">
             <!-- 需要记录的级别 -->
             <!-- <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY" /> -->
-            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %c - %m%n"/>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %p --- [%t] %logger{36} - %m%n"/>
         </Console>
 
-        <!-- 输出到文件，按天或者超过80MB分割 -->
-        <RollingFile name="RollingFile" fileName="../logs/xjj.log"
+        <!-- 输出到文件，按天或者超过100MB分割 -->
+        <RollingFile name="RollingFile" fileName="d:/logs/order.log"
                      filePattern="${sys:user.home}/logs/$${date:yyyy-MM}/demo-%d{yyyy-MM-dd}-%i.log">
             <!-- 需要记录的级别 -->
             <!-- <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY" /> -->
-            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %c - %m%n"/>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %p --- [%t] %logger{36} - %m%n"/>
             <Policies>
                 <OnStartupTriggeringPolicy/>
                 <TimeBasedTriggeringPolicy/>
@@ -39,11 +39,8 @@
     <Loggers>
         <Root level="info"> <!-- 全局配置 -->
             <AppenderRef ref="Console"/>
-            <!--<AppenderRef ref="RollingFile"/>-->
+            <AppenderRef ref="RollingFile"/>
         </Root>
         <!-- 为sql语句配置特殊的Log级别，方便调试 -->
-        <Logger name="com.wsun.springcloud.service.order" level="debug" additivity="false">
-            <AppenderRef ref="Console"/>
-        </Logger>
     </Loggers>
 </Configuration>

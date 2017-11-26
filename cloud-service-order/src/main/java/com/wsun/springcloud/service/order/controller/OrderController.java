@@ -39,4 +39,8 @@ public class OrderController {
         return order;
     }
 
+    public static void main(String[] args) {
+        log.error("我去");
+    }
+
 }

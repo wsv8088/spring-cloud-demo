@@ -6,8 +6,7 @@ server:
 logging:
   level:
     root: info
-    com.wsun.springcloud.service.user: info
-  file: d:\logs\user.log
+  file: d:\logs\user1.log
 
 info:
   version: "@project.version@"
